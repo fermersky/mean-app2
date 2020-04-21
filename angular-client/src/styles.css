@@ -1,1 +1,57 @@
 /* You can add global styles to this file, and also import other style files */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.flex-row {
+  display: flex;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.f-a-c {
+  align-items: center;
+}
+
+.container {
+  padding-top: 40px;
+  width: 60%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.form-input {
+  width: 350px;
+  margin: 10px 0;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
