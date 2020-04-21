@@ -1,6 +1,10 @@
 <h1>Hello, {{ username }}</h1>
 <p>Share your experience!</p>
 
+<a [routerLink]="['/hint/create']" mat-raised-button>Create hint!</a>
+
+<hr style="margin: 30px 0;" />
+
 <hts-hints-filter
   (filterFieldInput)="onFilterFieldChanged($event)"
 ></hts-hints-filter>

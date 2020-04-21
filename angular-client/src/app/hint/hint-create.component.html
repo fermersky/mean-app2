@@ -1,0 +1,55 @@
+<div class="container">
+  <form [formGroup]="form" id="create-form">
+    <mat-form-field class="form-input" appearance="fill">
+      <mat-label>Title</mat-label>
+      <input matInput [formControl]="title" placeholder="Hint title" />
+      <mat-hint>{{ title.value?.length || 0 }} / 255</mat-hint>
+      <mat-error
+        *ngIf="title.hasError('maxlength') || title.hasError('minlength')"
+      >
+        Title must be more then 10 chars and less then 255 chars
+      </mat-error>
+      <mat-error *ngIf="title.hasError('required')">
+        Title is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <div class="tags-container">
+      <div class="tags-item" *ngFor="let tag of tagsArray; let i = index">
+        <mat-form-field appearance="fill">
+          <mat-label>Tag</mat-label>
+          <input [formControl]="tag" matInput />
+          <mat-hint> </mat-hint>
+          <mat-error
+            *ngIf="tags.hasError('maxlength') || tags.hasError('minlength')"
+          >
+            Tag must be more then 10 chars and less then 255 chars
+          </mat-error>
+          <mat-error *ngIf="tags.hasError('required')">
+            Tag is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <button
+          (click)="removeTagControl(i)"
+          class="remove-tag-btn"
+          mat-stroked-button
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+
+    <button (click)="createTagControl()" mat-raised-button color="primary">
+      Add tag
+    </button>
+  </form>
+  <button
+    (click)="postHint()"
+    mat-raised-button
+    color="accent"
+    id="publish-btn"
+  >
+    Publish hint!
+  </button>
+</div>
