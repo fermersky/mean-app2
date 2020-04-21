@@ -1,2 +1,23 @@
-<p>hints-list works!</p>
-<code>{{ hints | json }}</code>
+<mat-list *ngIf="hints">
+  <ng-container *ngFor="let h of hints">
+    <mat-list-item>
+      <div class="hint-list-item">
+        <div style="display: flex;">
+          <h3 class="hint-title">{{ h.title }}</h3>
+
+          <ul class="tag-list">
+            <li class="tag-list-item" *ngFor="let t of h.tags">{{ t }}</li>
+          </ul>
+        </div>
+
+        <h3 class="hint-date">
+          <i style="margin-right: 10px;" class="fas fa-calendar-day"></i>
+          {{ h.date | date }}
+        </h3>
+      </div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+  </ng-container>
+</mat-list>
+
+<h2 *ngIf="!hints || hints.length == 0">Nothing to display.</h2>
