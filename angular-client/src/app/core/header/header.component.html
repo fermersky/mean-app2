@@ -1,0 +1,39 @@
+<header class="app-header">
+  <nav>
+    <ul class="flex-row app-header-menu-list">
+      <li><a [routerLink]="['home']" mat-button>Home</a></li>
+      <li *ngIf="!auth.isSignedIn()">
+        <a [routerLink]="['account/register']" mat-button>Register</a>
+      </li>
+      <li *ngIf="!auth.isSignedIn()">
+        <a [routerLink]="['account/login']" mat-button
+          ><i class="fas fa-sign-in-alt"></i>Log in</a
+        >
+      </li>
+      <li *ngIf="auth.isSignedIn()">
+        <a [routerLink]="['account/profile']" mat-button
+          ><i class="fas fa-user-circle"></i>My Profile</a
+        >
+      </li>
+      <li *ngIf="auth.isSignedIn()">
+        <a (click)="logout()" mat-button
+          ><i id="logout-icon" class="fas fa-sign-in-alt"></i>Log out</a
+        >
+      </li>
+    </ul>
+  </nav>
+  <div>
+    <a
+      style="margin-right: 10px;"
+      href="https://github.com/fermersky/mean-app"
+      mat-raised-button
+    >
+      <i class="fab fa-github"></i>
+      Github
+    </a>
+    <a href="https://www.linkedin.com/in/danielskrypnik/" mat-raised-button>
+      <i class="fab fa-linkedin"></i>
+      LinkedIn
+    </a>
+  </div>
+</header>

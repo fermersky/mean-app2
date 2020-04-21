@@ -1,0 +1,13 @@
+.app-footer {
+  height: 120px;
+  background: rgb(29, 29, 29);
+  color: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('../../../assets/repeated-square-dark.png');
+}
+
+.app-footer-title {
+  margin: 0;
+}
