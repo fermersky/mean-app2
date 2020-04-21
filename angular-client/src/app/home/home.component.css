@@ -1,0 +1,12 @@
+.app-home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-home-title {
+  font-size: 60px;
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
