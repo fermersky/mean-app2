@@ -8,10 +8,15 @@ import { UsersService } from 'src/app/core/services/users.service';
 })
 export class ProfileComponent implements OnInit {
   username: string;
+  filterText: string;
 
   constructor(private users: UsersService) {}
 
   ngOnInit() {
     this.username = this.users.getUserFromLocalStorage().name;
+  }
+
+  onFilterFieldChanged(val: string) {
+    this.filterText = val;
   }
 }

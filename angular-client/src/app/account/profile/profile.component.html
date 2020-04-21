@@ -1,3 +1,7 @@
 <h1>Hello, {{ username }}</h1>
+<p>Share your experience!</p>
 
-<hts-profile-hints></hts-profile-hints>
+<hts-hints-filter
+  (filterFieldInput)="onFilterFieldChanged($event)"
+></hts-hints-filter>
+<hts-profile-hints [filterText]="filterText"></hts-profile-hints>
