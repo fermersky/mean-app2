@@ -16,7 +16,6 @@ export class HintStorageService {
 
   constructor(private hints: HintsService, private users: UsersService) {
     this.hints$ = this.hintsSubject$.asObservable();
-
     this.fethcHints();
   }
 
@@ -30,6 +29,12 @@ export class HintStorageService {
 
   loadUp(hints: IHint[]) {
     this.hintsSubject$.next(hints);
+  }
+
+  add(title: string, tags: string[], author: string, user_id: string) {
+    this.hints.postHint(title, tags, author, user_id).subscribe((_) => {
+      this.fethcHints();
+    });
   }
 
   update(hint: IHint) {

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { HintsService } from '../core/services/hints.service';
 import { UsersService } from '../core/services/users.service';
+import { HintStorageService } from '../core/services/hints-storage.service';
 
 @Component({
   selector: 'app-hint-create',
@@ -16,7 +16,7 @@ export class HintCreateComponent implements OnInit {
   public tags: FormArray;
 
   constructor(
-    private hints: HintsService,
+    private hintsStorage: HintStorageService,
     private user: UsersService,
     private router: Router
   ) {}
@@ -61,7 +61,7 @@ export class HintCreateComponent implements OnInit {
       const user_id = uinfo._id;
 
       try {
-        await this.hints.postHint(title, tags, author, user_id).toPromise();
+        this.hintsStorage.add(title, tags, author, user_id);
 
         this.router.navigate(['/account/profile']);
       } catch (ex) {
