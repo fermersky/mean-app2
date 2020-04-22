@@ -1,0 +1,7 @@
+.profile-illustation {
+  max-width: 20%;
+  position: absolute;
+  right: 50px;
+  top: 100px;
+  transform: rotateY(180deg);
+}

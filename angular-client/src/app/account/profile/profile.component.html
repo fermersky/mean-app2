@@ -1,9 +1,16 @@
 <h1>Hello, {{ username }}</h1>
 <p>Share your experience!</p>
 
+<img
+  src="../../../assets/undraw_sorting_thoughts_6d48.svg"
+  alt="undraw_sorting_thoughts"
+  class="profile-illustation"
+/>
+
 <a [routerLink]="['/hint/create']" mat-raised-button>Create hint!</a>
 
-<hr style="margin: 30px 0;" />
+<br />
+<br />
 
 <hts-hints-filter
   (filterFieldInput)="onFilterFieldChanged($event)"
