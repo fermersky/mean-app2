@@ -3,6 +3,8 @@ import {
   OnInit,
   Input,
   ChangeDetectionStrategy,
+  EventEmitter,
+  Output,
 } from '@angular/core';
 import { IHint } from '../core/interfaces';
 
@@ -14,8 +16,15 @@ import { IHint } from '../core/interfaces';
 })
 export class HintsListComponent implements OnInit {
   @Input() hints: IHint[];
+  @Input() showActions: boolean = false;
+
+  @Output() onUpdate = new EventEmitter<string>();
 
   constructor() {}
 
   ngOnInit() {}
+
+  update(id: string) {
+    this.onUpdate.emit(id);
+  }
 }

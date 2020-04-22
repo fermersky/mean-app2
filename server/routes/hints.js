@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { postHintValidateAsync } = require('../models/modelsValidation');
+const { postHintValidateAsync, putHintValidateAsync } = require('../models/modelsValidation');
 const Hint = require('../models/Hint');
 const Tag = require('../models/Tag');
 const auth = require('./auth');
@@ -59,7 +59,7 @@ router.post('/', auth, async (req, res) => {
     const { tags } = req.body;
 
     // add tags which are not in tags table in db
-    tags.forEach(async tag => {
+    tags.forEach(async (tag) => {
       // check tag existens in tags table
       const result = await Tag.findOne({ title: tag });
 
@@ -70,6 +70,30 @@ router.post('/', auth, async (req, res) => {
     });
 
     const hint = await Hint.create(req.body);
+    res.status(201).json(hint._id);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+router.put('/', auth, async (req, res) => {
+  try {
+    await putHintValidateAsync(req.body);
+
+    const { tags, _id } = req.body;
+
+    // add tags which are not in tags table in db
+    tags.forEach(async (tag) => {
+      // check tag existens in tags table
+      const result = await Tag.findOne({ title: tag });
+
+      if (!result) {
+        // add if tag doesn't exist
+        await Tag.create({ title: tag });
+      }
+    });
+
+    const hint = await Hint.findByIdAndUpdate(_id, req.body);
     res.status(201).json(hint._id);
   } catch (err) {
     res.status(400).json(err);

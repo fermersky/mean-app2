@@ -25,6 +25,10 @@
 }
 
 .hint-date {
-  margin: 0;
+  margin: 0 0 0 20px;
   font-size: 14px;
+}
+
+.action-icon {
+  margin: -5px 5px 0 0;
 }

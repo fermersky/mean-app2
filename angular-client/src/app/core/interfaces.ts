@@ -5,6 +5,7 @@ export interface IUserInfo {
 }
 
 export interface IHint {
+  _id: string;
   title: string;
   tags: string[];
   author: string;

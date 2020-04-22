@@ -10,10 +10,21 @@
           </ul>
         </div>
 
-        <h3 class="hint-date">
-          <i style="margin-right: 10px;" class="fas fa-calendar-day"></i>
-          {{ h.date | date }}
-        </h3>
+        <div class="f-row f-align-center">
+          <a
+            (click)="update(h._id)"
+            mat-button
+            color="primary"
+            routerLink="['/hint/update']"
+          >
+            <i class="fas fa-edit action-icon"></i>
+            Update
+          </a>
+          <h3 class="hint-date">
+            <i style="margin-right: 10px;" class="fas fa-calendar-day"></i>
+            {{ h.date | date }}
+          </h3>
+        </div>
       </div>
     </mat-list-item>
     <mat-divider></mat-divider>

@@ -36,4 +36,22 @@ export class HintsService {
       { headers }
     );
   }
+
+  putHint(hint: IHint): Observable<Object> {
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + this.users.getUserFromLocalStorage().token,
+    });
+
+    console.log(this.users.getUserFromLocalStorage().token);
+
+    return this.http.put(
+      this.baseUrl,
+      {
+        title: hint.title,
+        _id: hint._id,
+        tags: hint.tags,
+      },
+      { headers }
+    );
+  }
 }
