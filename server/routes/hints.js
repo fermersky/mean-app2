@@ -107,7 +107,7 @@ router.delete('/:id', auth, async (req, res) => {
     const hint = await Hint.findById(id);
 
     hint.tags.forEach(async (t) => {
-      const tag = await Tag.find({ title: t });
+      const tag = await Tag.findOne({ title: t });
       await Tag.findByIdAndDelete(tag._id);
     });
 
