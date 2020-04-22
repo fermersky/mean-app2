@@ -42,8 +42,6 @@ export class HintsService {
       Authorization: 'Bearer ' + this.users.getUserFromLocalStorage().token,
     });
 
-    console.log(this.users.getUserFromLocalStorage().token);
-
     return this.http.put(
       this.baseUrl,
       {
@@ -53,5 +51,13 @@ export class HintsService {
       },
       { headers }
     );
+  }
+
+  deleteHint(_id: string): Observable<Object> {
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + this.users.getUserFromLocalStorage().token,
+    });
+
+    return this.http.delete(this.baseUrl + '/' + _id, { headers });
   }
 }

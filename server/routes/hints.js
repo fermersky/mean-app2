@@ -100,4 +100,23 @@ router.put('/', auth, async (req, res) => {
   }
 });
 
+router.delete('/:id', auth, async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    const hint = await Hint.findById(id);
+
+    hint.tags.forEach(async (t) => {
+      const tag = await Tag.find({ title: t });
+      await Tag.findByIdAndDelete(tag._id);
+    });
+
+    await Hint.findByIdAndDelete(id);
+
+    res.status(200).json(hint._id);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 module.exports = router;

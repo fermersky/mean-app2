@@ -19,6 +19,7 @@ export class HintsListComponent implements OnInit {
   @Input() showActions: boolean = false;
 
   @Output() onUpdate = new EventEmitter<string>();
+  @Output() onDelete = new EventEmitter<string>();
 
   constructor() {}
 
@@ -26,5 +27,9 @@ export class HintsListComponent implements OnInit {
 
   update(id: string) {
     this.onUpdate.emit(id);
+  }
+
+  delete(id: string) {
+    this.onDelete.emit(id);
   }
 }

@@ -11,6 +11,7 @@ import { IHint } from 'src/app/core/interfaces';
   template: `
     <hts-hints-list
       (onUpdate)="onUpdate($event)"
+      (onDelete)="onDelete($event)"
       showActions="true"
       [hints]="hintsArray"
     ></hts-hints-list>
@@ -50,6 +51,10 @@ export class ProfileHintsComponent implements OnInit, OnDestroy {
     const hint = this.immutableHints.find((h) => h._id == id);
     this.hintsStorage.hintToUpdate = hint;
     this.router.navigateByUrl('/hint/update');
+  }
+
+  onDelete(id: string) {
+    this.hintsStorage.delete(id);
   }
 
   ngOnDestroy(): void {

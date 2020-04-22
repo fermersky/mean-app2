@@ -37,4 +37,10 @@ export class HintStorageService {
       this.fethcHints();
     });
   }
+
+  delete(id: string) {
+    this.hints.deleteHint(id).subscribe((_) => {
+      this.fethcHints();
+    });
+  }
 }
