@@ -104,7 +104,7 @@ export class RegisterComponent implements OnInit {
 
         if (response) {
           this.auth.signIn(response);
-          this.router.navigate(['profile']);
+          this.router.navigate(['account/profile']);
         }
       } catch (ex) {
         console.log(ex);

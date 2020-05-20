@@ -8,20 +8,14 @@ import { IHint } from 'src/app/core/interfaces';
 
 @Component({
   selector: 'hts-profile-hints',
-  template: `
-    <hts-hints-list
-      (onUpdate)="onUpdate($event)"
-      (onDelete)="onDelete($event)"
-      showActions="true"
-      [hints]="hintsArray"
-    ></hts-hints-list>
-  `,
+  templateUrl: 'profile-hints.component.html',
 })
 export class ProfileHintsComponent implements OnInit, OnDestroy {
   hints$: Observable<IHint[]>;
   immutableHints: IHint[];
   hintsArray: IHint[];
   subs = new SubSink();
+  loading = false;
 
   @Input() set filterText(val: string) {
     val = val && val.toLowerCase();
@@ -41,9 +35,13 @@ export class ProfileHintsComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    this.loading = true;
+
     this.subs.sink = this.hintsStorage.hints$.subscribe((data) => {
       this.immutableHints = data;
       this.hintsArray = data;
+
+      this.loading = false;
     });
   }
 

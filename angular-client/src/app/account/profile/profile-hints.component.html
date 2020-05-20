@@ -1,0 +1,9 @@
+<p *ngIf="loading">Loading...</p>
+
+<hts-hints-list
+  *ngIf="!loading"
+  (onUpdate)="onUpdate($event)"
+  (onDelete)="onDelete($event)"
+  showActions="true"
+  [hints]="hintsArray"
+></hts-hints-list>
