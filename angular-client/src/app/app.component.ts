@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SwUpdate, SwPush } from '@angular/service-worker';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-client';
+
+  update = false;
+
+  constructor(updates: SwUpdate) {
+    updates.available.subscribe((event) => {
+      // this.update = true;
+
+      updates.activateUpdate().then(() => document.location.reload());
+    });
+  }
 }
