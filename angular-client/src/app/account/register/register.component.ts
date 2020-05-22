@@ -9,6 +9,7 @@ import {
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'hts-register',
@@ -28,14 +29,17 @@ export class RegisterComponent implements OnInit {
   constructor(
     private auth: AuthService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private title: Title
   ) {
     this.createFormControls();
     this.createForm();
     this.bindCustomValidators();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.title.setTitle('HService: Join our service for free!');
+  }
 
   createFormControls() {
     this.name = new FormControl('', [
