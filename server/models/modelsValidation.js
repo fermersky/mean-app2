@@ -2,7 +2,7 @@ const Joi = require('@hapi/joi');
 
 const postHintValidateAsync = async (data) => {
   const schema = Joi.object({
-    title: Joi.string().required().min(6).max(155),
+    title: Joi.string().required().min(6).max(255),
     tags: Joi.array(),
     user_id: Joi.string().required(),
     author: Joi.string().required(),
@@ -14,7 +14,7 @@ const postHintValidateAsync = async (data) => {
 const putHintValidateAsync = async (data) => {
   const schema = Joi.object({
     _id: Joi.string().required(),
-    title: Joi.string().required().min(6).max(155),
+    title: Joi.string().required().min(6).max(255),
     tags: Joi.array(),
   });
 
