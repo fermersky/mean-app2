@@ -5,6 +5,7 @@ import {
   ElementRef,
   Output,
   EventEmitter,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 
 import { fromEvent } from 'rxjs';
@@ -14,6 +15,7 @@ import { distinctUntilChanged, debounceTime } from 'rxjs/operators/';
   selector: 'hts-hints-filter',
   templateUrl: './hints-filter.component.html',
   styleUrls: ['./hints-filter.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HintsFilterComponent implements OnInit {
   @ViewChild('filterField', { static: true }) filterField: ElementRef;
