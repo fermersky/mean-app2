@@ -15,10 +15,7 @@ import { EventBusService, EventType } from '../services/event-bus.service';
 export class OverlayInterceptor implements HttpInterceptor {
   constructor(private bus: EventBusService) {}
 
-  intercept(
-    req: HttpRequest<any>,
-    next: HttpHandler
-  ): Observable<HttpEvent<any>> {
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.bus.emit(EventType.httpRequest);
 
     return next.handle(req).pipe(

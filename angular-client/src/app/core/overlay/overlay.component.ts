@@ -4,9 +4,11 @@ import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'hts-overlay',
-  template: ` <div *ngIf="display" class="overlay-block">
-    <mat-spinner></mat-spinner>
-  </div>`,
+  template: `
+    <div *ngIf="display" class="overlay-block">
+      <mat-spinner></mat-spinner>
+    </div>
+  `,
   styleUrls: ['overlay.component.css'],
 })
 export class OverlayComponent implements OnInit {
