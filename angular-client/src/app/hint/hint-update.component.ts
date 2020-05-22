@@ -1,19 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, Validators, FormArray, FormGroup } from '@angular/forms';
 
 import { HintStorageService } from '../core/services/hints-storage.service';
 import { IHint } from '../core/interfaces';
+import { SubSink } from 'subsink';
 
 @Component({
   selector: 'app-hint-update',
   templateUrl: './hint-update.component.html',
   styleUrls: ['./hint-update.component.css'],
 })
-export class HintUpdateComponent implements OnInit {
+export class HintUpdateComponent implements OnInit, OnDestroy {
   public form: FormGroup;
   public title: FormControl;
   public tags: FormArray;
+
+  private subs: SubSink = new SubSink();
 
   hint: IHint;
 
@@ -31,6 +34,10 @@ export class HintUpdateComponent implements OnInit {
     }
   }
 
+  ngOnDestroy() {
+    this.subs.unsubscribe();
+  }
+
   update() {
     if (this.form.valid) {
       console.log(this.hint);
@@ -46,7 +53,10 @@ export class HintUpdateComponent implements OnInit {
       };
 
       this.hintsStorage.update(hint);
-      this.router.navigate(['/account/profile']);
+
+      this.subs.sink = this.hintsStorage.hints$.subscribe(() => {
+        this.router.navigate(['/account/profile']);
+      });
     }
   }
 
