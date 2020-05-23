@@ -6,9 +6,7 @@
         <a [routerLink]="['account/register']" mat-button>Register</a>
       </li>
       <li *ngIf="!auth.isSignedIn()">
-        <a [routerLink]="['account/login']" mat-button
-          ><i class="fas fa-sign-in-alt"></i>Log in</a
-        >
+        <a [routerLink]="['account/login']" mat-button><i class="fas fa-sign-in-alt"></i>Log in</a>
       </li>
       <li *ngIf="auth.isSignedIn()">
         <a [routerLink]="['account/profile']" mat-button
@@ -23,11 +21,7 @@
     </ul>
   </nav>
   <div>
-    <a
-      style="margin-right: 10px;"
-      href="https://github.com/fermersky/mean-app"
-      mat-raised-button
-    >
+    <a style="margin-right: 10px;" href="https://github.com/fermersky/mean-app2" mat-raised-button>
       <i class="fab fa-github"></i>
       Github
     </a>
