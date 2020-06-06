@@ -32,9 +32,8 @@ export class AuthService {
       let payload = uinfo.token.split('.')[1];
       payload = JSON.parse(window.atob(payload));
 
-      if (uinfo) {
-        return payload.exp > Date.now() / 1000;
-      }
+
+      return payload.exp > Date.now() / 1000;
     }
 
     return false;
